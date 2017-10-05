@@ -1,27 +1,21 @@
 # EpicInvaders
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+The leader board of Epic Invaders XII has been hacked, EpicLabTest is a web tool to restore this leader board. Given the 
+username, the encryption system and the encrypted score, the data is processed so the correct score of each user
+is restored.
 
-## Development server
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4. Run `ng serve` 
+for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the 
+source files.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Another option to run the app is to use Docker. To create the docker image run in the root folder of the project: 
 
-## Code scaffolding
+`docker build -t epic-invaders .` 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Once the image, start the container by running: 
 
-## Build
+`docker run --rm --name epic-invaders-container -it -p 4200:4200 epic-invaders` 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+As with the angular-cli, navigate to `http://localhost:4200/` (or the port configured in the docker run command) 
+to access the application.
