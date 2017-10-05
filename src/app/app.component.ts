@@ -26,7 +26,7 @@ export class AppComponent {
       const [ username, symbols, encryptedPoints ] = params;
 
       const symbolsWithValue = this.createSymbolsWithValue(symbols);
-      const decryptedScore = this.calculatePoints(encryptedPoints, symbolsWithValue);
+      const decryptedScore = this.calculateScore(encryptedPoints, symbolsWithValue);
 
       solution.push({ username, symbols, encryptedPoints, decryptedPoints: decryptedScore });
     }
@@ -66,19 +66,19 @@ export class AppComponent {
    *
    * @param {string} encryptedScore
    * @param {Map<string, number>} symbolsWithValue
-   * @returns {number}
+   * @returns {number} the score in decimal base (decrypted)
    */
-  private calculatePoints(encryptedScore: string, symbolsWithValue: Map<string, number>): number {
+  private calculateScore(encryptedScore: string, symbolsWithValue: Map<string, number>): number {
     const base = symbolsWithValue.size;
-    const encryptedPointsLength = encryptedScore.length;
+    const encryptedScoreLength = encryptedScore.length;
     let exponent = 0;
-    let decryptedPoints = 0;
-    for (let i = encryptedPointsLength - 1; i >= 0; i--) {
+    let decryptedScore = 0;
+    for (let i = encryptedScoreLength - 1; i >= 0; i--) {
       const currentSymbol = encryptedScore.charAt(i);
       const partialValue = symbolsWithValue.get(currentSymbol) * Math.pow(base, exponent);
-      decryptedPoints += partialValue;
+      decryptedScore += partialValue;
       exponent++;
     }
-    return decryptedPoints;
+    return decryptedScore;
   }
 }
